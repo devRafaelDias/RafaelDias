@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DeskTop extends StatelessWidget {
   const DeskTop({super.key});
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  void _launchEmail(String email) async {
+    final Uri _emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: email,
+    );
+    String urlString = _emailLaunchUri.toString();
+
+    if (await canLaunch(urlString)) {
+      await launch(urlString);
+    } else {
+      throw 'Could not launch $urlString';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +70,27 @@ class DeskTop extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/github.png',
-                    width: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Text(
-                      'devRafaelDias',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
+                  GestureDetector(
+                    onTap: () {
+                      _launchURL('https://github.com/devRafaelDias');
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/github.png',
+                          width: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(
+                            'devRafaelDias',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],
@@ -70,18 +101,27 @@ class DeskTop extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/instagram.png',
-                    width: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Text(
-                      'this.rafa',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
+                  GestureDetector(
+                    onTap: () {
+                      _launchURL('https://www.instagram.com/this.rafa');
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/instagram.png',
+                          width: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text(
+                            'this.rafa',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],
@@ -111,22 +151,42 @@ class DeskTop extends StatelessWidget {
                       children: [
                         const Flexible(
                           flex: 2,
-                          child: Column(
-                            children: [
-                              Text(
-                                'Web & Mobile\nDeveloper',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Web & Mobile',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 60,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Icon(
-                                Icons.access_alarm_rounded,
-                                color: Colors.white,
-                                size: 40,
-                                fill: 0.1,
-                              ),
-                            ],
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Developer',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 60,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 25),
+                                      child: Icon(
+                                        Icons.web_sharp,
+                                        color: Colors.white,
+                                        size: 80,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Flexible(
@@ -148,10 +208,13 @@ class DeskTop extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(60, 40, 50, 0),
+                          padding: EdgeInsets.fromLTRB(60, 60, 50, 0),
                           child: Text(
                             'Technologies',
                             style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.white,
+                              decorationThickness: 0.5,
                               color: Colors.white,
                               fontWeight: FontWeight.w800,
                               fontSize: 50,
@@ -163,22 +226,36 @@ class DeskTop extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 0,
-                        vertical: 60,
+                        horizontal: 40,
+                        vertical: 30,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('assets/images/tech_Icons/html.png',
-                              width: 190),
-                          Image.asset('assets/images/tech_Icons/css.png',
-                              width: 190),
-                          Image.asset('assets/images/tech_Icons/mysql.png',
-                              width: 190),
-                          Image.asset('assets/images/tech_Icons/flutter.png',
-                              width: 190),
-                          Image.asset('assets/images/tech_Icons/dart.png',
-                              width: 190),
+                          Expanded(
+                            child: Image.asset(
+                                'assets/images/tech_Icons/html.png'),
+                          ),
+                          Expanded(
+                            child:
+                                Image.asset('assets/images/tech_Icons/css.png'),
+                          ),
+                          Expanded(
+                            child: Image.asset(
+                                'assets/images/tech_Icons/mysql.png'),
+                          ),
+                          Expanded(
+                            child:
+                                Image.asset('assets/images/tech_Icons/git.png'),
+                          ),
+                          Expanded(
+                            child: Image.asset(
+                                'assets/images/tech_Icons/dart.png'),
+                          ),
+                          Expanded(
+                            child: Image.asset(
+                                'assets/images/tech_Icons/flutter.png'),
+                          ),
                         ],
                       ),
                     )
@@ -243,15 +320,35 @@ class DeskTop extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: Text(
-                      'devrafaelferreiradias@gmail.com',
-                      style: TextStyle(
-                          fontSize: larg * 0.015, color: Colors.white),
+                  GestureDetector(
+                    onTap: () {
+                      _launchEmail('devrafaelferreiradias@gmail.com');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Text(
+                        'devrafaelferreiradias@gmail.com',
+                        style: TextStyle(
+                            fontSize: larg * 0.015, color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Powered by Rafael Dias',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ],
