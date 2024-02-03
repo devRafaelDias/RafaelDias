@@ -190,16 +190,19 @@ class DeskTop extends StatelessWidget {
                           ),
                         ),
                         Flexible(
-                          child: Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  'assets/images/perfil.jpeg',
-                                  height: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.asset(
+                                    'assets/images/perfil.jpeg',
+                                    height: 200,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
