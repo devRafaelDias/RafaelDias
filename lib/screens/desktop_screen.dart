@@ -179,11 +179,20 @@ class DeskTop extends StatelessWidget {
                             padding: const EdgeInsets.fromLTRB(5, 20, 5, 0),
                             child: Column(
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(110),
-                                  child: Image.asset(
-                                    'assets/images/perfil.jpeg',
-                                    height: 200,
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3,
+                                    ),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: Image.asset(
+                                      'assets/images/perfil.jpeg',
+                                      height: 200,
+                                    ),
                                   ),
                                 ),
                               ],

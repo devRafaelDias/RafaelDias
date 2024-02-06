@@ -173,6 +173,7 @@ class Mobile extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(10, 20, 15, 20),
                   width: larg * 0.8,
+                  height: 210,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: const Color(0xFF0D0D0D),
