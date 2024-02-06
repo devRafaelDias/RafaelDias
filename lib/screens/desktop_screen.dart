@@ -7,6 +7,7 @@ class DeskTop extends StatelessWidget {
   String githubLink = 'https://github.com/devRafaelDias';
   String instagramLink = 'https://www.instagram.com/this.rafa';
   String emailAddress = 'devrafaelferreiradias@gmail.com';
+  String telegram = 'https://t.me/devrafaeldias';
 
   DeskTop({super.key});
 
@@ -105,10 +106,41 @@ class DeskTop extends StatelessWidget {
                               fontSize: 25,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
-                  )
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      lauchPerfil(instagramLink);
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/telegrama.png',
+                          width: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(15),
+                          child: SelectableText(
+                            't.me',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -317,16 +349,45 @@ class DeskTop extends StatelessWidget {
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () => launchEmail(emailAddress),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: Text(
-                        'devrafaelferreiradias@gmail.com',
-                        style: TextStyle(
-                            fontSize: larg * 0.015, color: Colors.white),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Image.asset('assets/images/e-mail.png', width: 45,),
+                          GestureDetector(
+                            onTap: () => launchEmail(emailAddress),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                              child: Text(
+                                'devrafaelferreiradias@gmail.com',
+                                style: TextStyle(
+                                    fontSize: larg * 0.015, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Image.asset('assets/images/telegrama.png', width: 40,),
+                          GestureDetector(
+                            onTap: () => lauchPerfil(telegram),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                              child: Text(
+                                't.me/devrafaeldias',
+                                style: TextStyle(
+                                    fontSize: larg * 0.015,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),

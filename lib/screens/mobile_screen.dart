@@ -277,7 +277,7 @@ class Mobile extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: SelectableText(
-                              telegram,
+                              't.me/devrafaeldias',
                               style: TextStyle(
                                   color: Colors.white, fontSize: larg * 0.04),
                             ),
