@@ -70,6 +70,8 @@ flutter:
     - assets/images/tech_Icons/mysql.png
     - assets/images/tech_Icons/dart.png
     - assets/images/tech_Icons/git.png
+    - assets/images/e-mail.png
+    - assets/images/telegrama.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

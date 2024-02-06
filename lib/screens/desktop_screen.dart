@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:rafadev/functions/launch_email.dart';
+import '../functions/launch_perfil.dart';
 
+// ignore: must_be_immutable
 class DeskTop extends StatelessWidget {
-  const DeskTop({super.key});
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  String githubLink = 'https://github.com/devRafaelDias';
+  String instagramLink = 'https://www.instagram.com/this.rafa';
+  String emailAddress = 'devrafaelferreiradias@gmail.com';
 
-  void _launchEmail(String email) async {
-    final Uri _emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: email,
-    );
-    String urlString = _emailLaunchUri.toString();
-
-    if (await canLaunch(urlString)) {
-      await launch(urlString);
-    } else {
-      throw 'Could not launch $urlString';
-    }
-  }
+  DeskTop({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +57,7 @@ class DeskTop extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      _launchURL('https://github.com/devRafaelDias');
+                      lauchPerfil(githubLink);
                     },
                     child: Row(
                       children: [
@@ -82,7 +67,7 @@ class DeskTop extends StatelessWidget {
                         ),
                         const Padding(
                           padding: EdgeInsets.all(15),
-                          child: Text(
+                          child: SelectableText(
                             'devRafaelDias',
                             style: TextStyle(
                               color: Colors.white,
@@ -103,7 +88,7 @@ class DeskTop extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      _launchURL('https://www.instagram.com/this.rafa');
+                      lauchPerfil(instagramLink);
                     },
                     child: Row(
                       children: [
@@ -113,7 +98,7 @@ class DeskTop extends StatelessWidget {
                         ),
                         const Padding(
                           padding: EdgeInsets.all(15),
-                          child: Text(
+                          child: SelectableText(
                             'this.rafa',
                             style: TextStyle(
                               color: Colors.white,
@@ -176,7 +161,7 @@ class DeskTop extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 25),
+                                      padding: EdgeInsets.only(left: 20),
                                       child: Icon(
                                         Icons.web_sharp,
                                         color: Colors.white,
@@ -191,11 +176,11 @@ class DeskTop extends StatelessWidget {
                         ),
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(5, 20, 5, 0),
                             child: Column(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
+                                  borderRadius: BorderRadius.circular(110),
                                   child: Image.asset(
                                     'assets/images/perfil.jpeg',
                                     height: 200,
@@ -324,9 +309,7 @@ class DeskTop extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      _launchEmail('devrafaelferreiradias@gmail.com');
-                    },
+                    onTap: () => launchEmail(emailAddress),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                       child: Text(
