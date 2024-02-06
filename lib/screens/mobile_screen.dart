@@ -7,7 +7,7 @@ class Mobile extends StatelessWidget {
   String githubLink = 'https://github.com/devRafaelDias';
   String instagramLink = 'https://www.instagram.com/this.rafa';
   String emailAddress = 'devrafaelferreiradias@gmail.com';
-  String telegram = 't.me/devrafaeldias';
+  String telegram = 'https://t.me/devrafaeldias';
 
   Mobile({super.key});
 
@@ -69,7 +69,7 @@ class Mobile extends StatelessWidget {
               padding: const EdgeInsets.only(right: 40),
               child: GestureDetector(
                 onTap: () {
-                  (instagramLink);
+                  lauchPerfil(instagramLink);
                 },
                 child: Row(
                   children: [
@@ -117,7 +117,7 @@ class Mobile extends StatelessWidget {
                           color: Colors.white,
                           width: 3,
                         ),
-                      ),  
+                      ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
@@ -178,52 +178,44 @@ class Mobile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: const Color(0xFF0D0D0D),
                   ),
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    runAlignment: WrapAlignment.center,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    runSpacing: 20,
-                    children: [
-                      Expanded(
-                        child: Image.asset(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 10,
+                      runSpacing: 40,
+                      direction: Axis.horizontal,
+                      children: [
+                        Image.asset(
                           'assets/images/tech_Icons/html.png',
                           width: larg * 0.2,
                         ),
-                      ),
-                      Expanded(
-                        child: Image.asset(
+                        Image.asset(
                           'assets/images/tech_Icons/css.png',
                           width: larg * 0.2,
                         ),
-                      ),
-                      Expanded(
-                        child: Image.asset(
+                        Image.asset(
                           'assets/images/tech_Icons/mysql.png',
                           width: larg * 0.2,
                         ),
-                      ),
-                      Expanded(
-                        child: Padding(
+                        Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Image.asset(
                             'assets/images/tech_Icons/git.png',
                             width: larg * 0.12,
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Image.asset(
+                        Image.asset(
                           'assets/images/tech_Icons/dart.png',
                           width: larg * 0.2,
                         ),
-                      ),
-                      Expanded(
-                        child: Image.asset(
+                        Image.asset(
                           'assets/images/tech_Icons/flutter.png',
                           width: larg * 0.2,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
